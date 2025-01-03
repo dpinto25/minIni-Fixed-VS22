@@ -73,13 +73,13 @@ public:
 #endif
 
 #if ! defined INI_READONLY
-  bool put(const wxString& Section, const wxString& Key, bool Value) const
-    { return ini_putbool(Section.utf8_str(), Key.utf8_str(), (int)Value, iniFilename.utf8_str()) != 0; }
-
   bool put(const wxString& Section, const wxString& Key, long Value) const
     { return ini_putl(Section.utf8_str(), Key.utf8_str(), Value, iniFilename.utf8_str()) != 0; }
 
   bool put(const wxString& Section, const wxString& Key, int Value) const
+    { return ini_putl(Section.utf8_str(), Key.utf8_str(), (long)Value, iniFilename.utf8_str()) != 0; }
+
+  bool put(const wxString& Section, const wxString& Key, bool Value) const
     { return ini_putl(Section.utf8_str(), Key.utf8_str(), (long)Value, iniFilename.utf8_str()) != 0; }
 
   bool put(const wxString& Section, const wxString& Key, const wxString& Value) const
